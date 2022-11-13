@@ -1,0 +1,7 @@
+{
+  "name": "mediApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
