@@ -1,6 +1,6 @@
 ion-content{
-    --background: linear-gradient(45deg, rgba(53, 164, 249, 0.4), rgba(237, 43, 244, 0.5)),
-                  url('/assets/img/fondos_page_2_movil.jpg') no-repeat center center / cover;
+    --background: linear-gradient(45deg, rgba(53, 164, 249, 0.2), rgba(237, 43, 244, 0.3)),
+                  url('/assets/img/discoteca.jpg') no-repeat center center / cover;
 }
 ion-header{
     ion-toolbar{
@@ -22,8 +22,8 @@ ion-header{
     flex-direction: column;
     justify-content: center;
 
-    background: linear-gradient(45deg, rgba(255, 0, 0, 0.4), rgba(0, 0, 255, 0.5)),
-                url('/assets/img/discoteca.jpg') no-repeat center center / cover;
+    background: linear-gradient(45deg, rgba(255, 0, 0, 0.3), rgba(0, 0, 255, 0.4)),
+                url('/assets/img/discoteca2.jpg') no-repeat center center / cover;
 
     ion-list{
         background-color: transparent;
