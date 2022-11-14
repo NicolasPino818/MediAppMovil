@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { UserAccessGuard } from './guards/user-access/user-access.guard';
 
 const routes: Routes = [
   {
@@ -15,6 +16,11 @@ const routes: Routes = [
     path: 'restaurar-password',
     loadChildren: () => import('./public-pages/restaurar-password/restaurar-password.module').then( m => m.RestaurarPasswordPageModule)
   },
+  {
+    path: 'app',
+    canActivate: [UserAccessGuard],
+    loadChildren: () => import('./guarded-pages/pages-routing.module').then( m => m.PagesRoutingModule)
+  }
 ];
 
 @NgModule({

@@ -1,9 +1,53 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>registro-qr</ion-title>
+    <ion-title class="ion-text-center">Gererar Codigo QR</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen="true">
+  <ion-list class="fixed-card-center center-flex-content">
+    <ion-list class="ion-padding">
+      <form [formGroup]="datosClienteForm">
+        <ion-item>
+          <ion-label position="floating">Nombre Cliente</ion-label>
+          <ion-input
+            type="text"
+            placeholder="Ejem: John Doe"
+            formControlName="nombre"
+          >
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Rut Cliente</ion-label>
+          <ion-input
+            type="text"
+            placeholder="Ejem: 12345678-k"
+            formControlName="rut"
+          >
+          </ion-input>
+        </ion-item>
 
+        <ion-item class="ion-margin-top ion-margin-bottom" lines="none">
+          <ion-icon class="qr-icon" name="qr-code-outline"></ion-icon>
+        </ion-item>
+
+        <ion-button
+          type="submit"
+          color="tertiary"
+          class="ion-margin"
+          expand="full"
+        >
+          Generar Link de Codigo QR
+        </ion-button>
+      </form>
+      <ion-button
+        type="button"
+        color="tertiary"
+        class="ion-margin"
+        expand="full"
+      >
+        Ver mi listado de codigos
+      </ion-button>
+    </ion-list>
+  </ion-list>
 </ion-content>

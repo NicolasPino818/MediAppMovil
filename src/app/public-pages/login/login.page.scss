@@ -2,24 +2,8 @@ ion-content{
     --background: url('/assets/img/fondos_page_1_movil.jpg') no-repeat center center / cover;
 }
 
-
-.login-card{
-    position: fixed;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    max-width: 500px;
-    height: 70vh;
-
-    border-top-left-radius: 40px;
-    border-top-right-radius: 40px;
-
-    margin: auto;
-
-    .logo{
-        max-width: 180px;
-        max-height: 180px;
-        margin: auto;
+.fixed-card{
+    *{
+        font-family: bebas neue;
     }
 }

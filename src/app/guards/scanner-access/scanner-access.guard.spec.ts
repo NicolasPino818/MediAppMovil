@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { RolAccessGuard } from './rol-access.guard';
+import { ScannerAccessGuard } from './scanner-access.guard';
 
-describe('RolAccessGuard', () => {
-  let guard: RolAccessGuard;
+describe('ScannerAccessGuard', () => {
+  let guard: ScannerAccessGuard;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    guard = TestBed.inject(RolAccessGuard);
+    guard = TestBed.inject(ScannerAccessGuard);
   });
 
   it('should be created', () => {

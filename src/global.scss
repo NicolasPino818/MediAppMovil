@@ -24,3 +24,61 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+/*Google Fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css');
+
+
+/*Global css*/
+.fixed-card{
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 500px;
+    height: 70vh;
+    min-height: 70vh;
+    overflow: auto;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+
+    margin: auto;
+    *{
+        font-family: bebas neue;
+    }
+    .logo{
+        max-width: 180px;
+        max-height: 180px;
+        margin: auto;
+    }
+    ion-button{
+        font-size: 18px;
+    }
+}
+
+.fixed-card-center{
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    max-width: 500px;
+    min-height: 70vh;
+    height: 70vh;
+    overflow: auto;
+    border-radius: 40px;
+
+    margin: auto;
+    *{
+        font-family: bebas neue;
+    }
+    .logo{
+        max-width: 180px;
+        max-height: 180px;
+        margin: auto;
+    }
+    ion-button{
+        font-size: 18px;
+    }
+}

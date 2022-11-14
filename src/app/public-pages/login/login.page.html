@@ -1,25 +1,42 @@
 <ion-content>
-  <ion-list class="login-card ion-padding">
-    <ion-item class="ion-margin" lines="none">
-      <ion-img
-        class="logo"
-        src="/assets/img/icons_png_medi_1.png"
-        alt="Logo mediterraneo"
-      ></ion-img>
-    </ion-item>
-    <ion-item class="ion-margin-top ion-margin-bottom">
-      <ion-label position="floating">USUARIO</ion-label>
-      <ion-input type="text" placeholder="Tu usuario"></ion-input>
-    </ion-item>
-    <ion-item class="ion-margin-top ion-margin-bottom">
-      <ion-label position="floating">CONTRASEÑA</ion-label>
-      <ion-input type="password" placeholder="Tu contraseña"></ion-input>
-    </ion-item>
-    <ion-button class="ion-margin" color="tertiary" expand="block">
-      Login
-    </ion-button>
-    <ion-item [routerLink]="['/restaurar-password']" lines="none">
-      <ion-text>Restaurar Contraseña</ion-text>
-    </ion-item>
-  </ion-list>
+  <form [formGroup]="loginForm">
+    <ion-list class="fixed-card ion-padding">
+      <ion-item class="ion-margin" lines="none">
+        <ion-img
+          class="logo"
+          src="/assets/img/icons_png_medi_1.png"
+          alt="Logo mediterraneo"
+        ></ion-img>
+      </ion-item>
+      <ion-item class="ion-margin-top ion-margin-bottom">
+        <ion-label position="floating">USUARIO</ion-label>
+        <ion-input
+          type="text"
+          placeholder="Tu usuario"
+          formControlName="usuario"
+        >
+        </ion-input>
+      </ion-item>
+      <ion-item class="ion-margin-top ion-margin-bottom">
+        <ion-label position="floating">CONTRASEÑA</ion-label>
+        <ion-input
+          type="password"
+          placeholder="Tu contraseña"
+          formControlName="password"
+        ></ion-input>
+      </ion-item>
+      <ion-button
+        type="submit"
+        class="ion-margin"
+        color="tertiary"
+        expand="block"
+        [routerLink]="['/app/registro-qr']"
+      >
+        Login
+      </ion-button>
+      <ion-item [routerLink]="['/restaurar-password']" lines="none">
+        <ion-text>Restaurar Contraseña</ion-text>
+      </ion-item>
+    </ion-list>
+  </form>
 </ion-content>

@@ -1,0 +1,49 @@
+ion-content{
+    --background: linear-gradient(45deg, rgba(53, 164, 249, 0.4), rgba(237, 43, 244, 0.5)),
+                  url('/assets/img/fondos_page_2_movil.jpg') no-repeat center center / cover;
+}
+ion-header{
+    ion-toolbar{
+        --background: transparent;
+        color: #fff;
+    }
+}
+
+
+.fixed-card-center{
+    *{
+        font-family: bebas neue;
+    }
+    margin: auto;
+}
+
+.center-flex-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background: linear-gradient(45deg, rgba(255, 0, 0, 0.4), rgba(0, 0, 255, 0.5)),
+                url('/assets/img/discoteca.jpg') no-repeat center center / cover;
+
+    ion-list{
+        background-color: transparent;
+
+        ion-item{
+            --ion-item-background: rgba(0, 0, 0, 0.371);
+            margin-bottom: 5px;
+            border-radius: 5px;
+            color: #fff;
+            &:has(ion-icon){
+                --ion-item-background: transparent;
+            }
+            ion-icon{
+                color: #fff;
+            }
+        }
+    }
+}
+
+.qr-icon{
+    font-size: 50px;
+    margin: auto;
+}
