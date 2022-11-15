@@ -1,9 +1,29 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>scanner-qr</ion-title>
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center title"> ESCANEAR QR </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [ngClass]="scanActive ? 'scanActive' :''">
+  <ion-button expand="full" (click)="startScan()" [hidden]="scanActive">
+    <ion-icon name="scan-outline" slot="start"></ion-icon>
+    Ecanear
+  </ion-button>
 
+  <ion-list *ngIf="qrData && !scanActive">
+    <ion-item> Nombre: {{qrData.nombre}} </ion-item>
+
+    <ion-item> Rut: {{qrData.rut}} </ion-item>
+
+    <ion-item> Emitido: {{qrData.fecha_emision}} </ion-item>
+
+    <ion-item> Hora de caducidad: {{qrData.valido_hasta}} </ion-item>
+
+    <ion-button expand="full">Habilitar Entrada</ion-button>
+  </ion-list>
+
+  <ion-button class="" expand="full" *ngIf="scanActive" (click)="stopScan()">
+    Dejar de escanear
+  </ion-button>
+  <ion-icon *ngIf="scanActive" class="scan-icon" name="scan-outline"></ion-icon>
 </ion-content>

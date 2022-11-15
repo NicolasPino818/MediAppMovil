@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AlertController, ToastController } from '@ionic/angular';
 import QRCode from 'qrcode';
@@ -12,7 +12,7 @@ import { Clipboard } from '@capacitor/clipboard';
   templateUrl: './registro-qr.page.html',
   styleUrls: ['./registro-qr.page.scss'],
 })
-export class RegistroQrPage implements OnInit {
+export class RegistroQrPage implements OnInit, OnDestroy {
 
   datosClienteForm:FormGroup;
   linkQR:string;
@@ -28,6 +28,14 @@ export class RegistroQrPage implements OnInit {
         Validators.pattern('^([1-9]{1}[0-9]{0,1})(([0-9]+){3})(([0-9]+){3})-[0-9kK]{1}$')
       ])
     })
+  }
+
+  ionViewWillEnter(){
+    //console.log('will enter registro-qr')
+  }
+
+  ngOnDestroy(){
+    //console.log('destroy registro-qr')
   }
 
   private async datosAlert(){
@@ -71,11 +79,13 @@ export class RegistroQrPage implements OnInit {
         let rutDv = rutValue.slice(8).toString();
         rutFormato = rutmill + "."+ rutpart1 + "." + rutpart2 + rutDv.toLowerCase();
       }
+      let fecha = new Date().getDate() +'-'+(new Date().getMonth()+1)+'-'+ new Date().getFullYear();
+      let qrData = {nombre: nomValue, rut: rutFormato, fecha_emision: fecha, valido_hasta: '12:00'};
 
-      let qrData = `Nombre: ${nomValue}, Rut: ${rutFormato}, Estado: Valido`;
-
-      QRCode.toDataURL(qrData)
+                      //PASAR JSON A STRING Y DESPUES ENCRIPTAR
+      QRCode.toDataURL(btoa(JSON.stringify(qrData)))
       .then(url => {
+        console.log(url);
         this.linkQR = 'http://mediterraneo.cl/mi-codigo/123456'
         this.api.registrarCodigoQR(nomValue,rutFormato,url)
         .subscribe((response: ICrearQrResponse)=>{

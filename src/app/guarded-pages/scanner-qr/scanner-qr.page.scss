@@ -1,0 +1,20 @@
+
+.scanActive{
+    --background: #00000000;
+}
+.scanDeactive{}
+
+ion-content{
+    position: relative;
+}
+
+
+.scan-icon{
+    position: fixed;
+    inset: 0;
+    width: 85vw;
+    height: 85vw;
+    margin: auto;
+    background-color: transparent;
+    color: #fff;
+}

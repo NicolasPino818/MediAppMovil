@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-listado-codigos',
   templateUrl: './listado-codigos.page.html',
   styleUrls: ['./listado-codigos.page.scss'],
 })
-export class ListadoCodigosPage implements OnInit {
+export class ListadoCodigosPage implements OnInit, OnDestroy {
 
   datosPrueba = [
     {
@@ -37,6 +37,14 @@ export class ListadoCodigosPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  ionViewWillEnter(){
+    //console.log('will enter listado-qr')
+  }
+
+  ngOnDestroy(){
+    //console.log('destroy listado-qr')
   }
 
 }
