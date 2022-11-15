@@ -5,7 +5,7 @@ import { UserAccessGuard } from './guards/user-access/user-access.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'tabs',
     pathMatch: 'full'
   },
   {
@@ -17,9 +17,9 @@ const routes: Routes = [
     loadChildren: () => import('./public-pages/restaurar-password/restaurar-password.module').then( m => m.RestaurarPasswordPageModule)
   },
   {
-    path: 'app',
+    path: 'tabs',
     canActivate: [UserAccessGuard],
-    loadChildren: () => import('./guarded-pages/pages-routing.module').then( m => m.PagesRoutingModule)
+    loadChildren: () => import('./guarded-pages/tabs/tabs.module').then(m => m.TabsPageModule)
   }
 ];
 

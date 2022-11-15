@@ -38,4 +38,11 @@ export class StorageService {
     return this.storage.get(ROL_KEY);
   }
 
+  logOutDestroyData(){
+    this.storage.remove(ROL_KEY);
+    this.storage.remove(PRF_IMG);
+    this.storage.remove(USER);
+    this.storage.remove(JWT_KEY);
+  }
+
 }

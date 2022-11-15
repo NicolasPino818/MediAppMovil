@@ -30,10 +30,21 @@
         class="ion-margin"
         color="tertiary"
         expand="block"
-        [routerLink]="['/app/registro-qr']"
+        (click)="login()"
       >
-        Login
+        Login embajador
       </ion-button>
+
+      <ion-button
+        type="submit"
+        class="ion-margin"
+        color="tertiary"
+        expand="block"
+        (click)="login2()"
+      >
+        Login scanner
+      </ion-button>
+
       <ion-item [routerLink]="['/restaurar-password']" lines="none">
         <ion-text>Restaurar Contraseña</ion-text>
       </ion-item>

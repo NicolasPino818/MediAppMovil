@@ -1,9 +1,20 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>listado-codigos</ion-title>
+    <ion-title class="ion-text-center">Mis codigos</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen="true">
+  <ion-list class="listado">
+    <ion-item lines="none" *ngFor="let dato of datosPrueba">
+      <ion-text class="ion-text-center">{{dato.rut}}</ion-text>
+      <ion-text slot="start">{{dato.nombre}}</ion-text>
 
+      <ion-buttons class="ion-no-margin" slot="end">
+        <ion-button class="ion-no-margin">
+          <ion-text> Link <ion-icon name="copy-outline"></ion-icon> </ion-text>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
 </ion-content>

@@ -5,49 +5,46 @@
 </ion-header>
 
 <ion-content fullscreen="true">
-  <ion-list class="fixed-card-center center-flex-content">
-    <ion-list class="ion-padding">
-      <form [formGroup]="datosClienteForm">
-        <ion-item>
-          <ion-label position="floating">Nombre Cliente</ion-label>
-          <ion-input
-            type="text"
-            placeholder="Ejem: John Doe"
-            formControlName="nombre"
-          >
-          </ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Rut Cliente</ion-label>
-          <ion-input
-            type="text"
-            placeholder="Ejem: 12345678-k"
-            formControlName="rut"
-          >
-          </ion-input>
-        </ion-item>
-
-        <ion-item class="ion-margin-top ion-margin-bottom" lines="none">
-          <ion-icon class="qr-icon" name="qr-code-outline"></ion-icon>
-        </ion-item>
-
-        <ion-button
-          type="submit"
-          color="primary"
-          class="ion-margin"
-          expand="block"
+  <ion-list class="form-card ion-padding">
+    <form [formGroup]="datosClienteForm" (ngSubmit)="generarCodigo()">
+      <ion-item>
+        <ion-label position="stacked">Nombre Cliente</ion-label>
+        <ion-input
+          type="text"
+          placeholder="Ejem: John Doe"
+          formControlName="nombre"
         >
-          Generar Link de Codigo QR
-        </ion-button>
-      </form>
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Rut Cliente</ion-label>
+        <ion-input
+          type="text"
+          placeholder="Ejem: 12345678-k"
+          formControlName="rut"
+          maxlength="10"
+          minlength="9"
+        >
+        </ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin-top ion-margin-bottom" lines="none">
+        <ion-icon class="qr-icon" name="qr-code-outline"></ion-icon>
+      </ion-item>
+
       <ion-button
-        type="button"
-        color="tertiary"
+        type="submit"
+        color="secondary"
         class="ion-margin"
         expand="block"
       >
-        Ver mi listado de codigos
+        Generar Link de Codigo QR
       </ion-button>
-    </ion-list>
+
+      <ion-item lines="none" *ngIf="linkQR" (click)="copyLink()">
+        {{linkQR}}
+        <ion-icon name="copy-outline" slot="end"></ion-icon>
+      </ion-item>
+    </form>
   </ion-list>
 </ion-content>

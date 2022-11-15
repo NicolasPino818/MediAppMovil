@@ -1,0 +1,23 @@
+<ion-tabs>
+  <ion-tab-bar color="primary" slot="bottom">
+    <ion-tab-button *ngIf="rol == 'embajador'" tab="registro-qr">
+      <ion-icon name="qr-code-outline"></ion-icon>
+      <ion-label>Generar QR</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button *ngIf="rol == 'embajador'" tab="listado-codigos">
+      <ion-icon name="list-outline"></ion-icon>
+      <ion-label>Listado QR</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button *ngIf="rol == 'scanner'" tab="scanner-qr">
+      <ion-icon class="bx bx-qr-scan"></ion-icon>
+      <ion-label>scanner-qr</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button (click)="logOut()">
+      <ion-icon name="log-out-outline"></ion-icon>
+      <ion-label>Cerrar Sesión</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

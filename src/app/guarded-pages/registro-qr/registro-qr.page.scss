@@ -1,48 +1,53 @@
 ion-content{
-    --background: linear-gradient(45deg, rgba(53, 164, 249, 0.2), rgba(237, 43, 244, 0.3)),
-                  url('/assets/img/discoteca.jpg') no-repeat center center / cover;
+    --background: linear-gradient(45deg, rgba(255, 0, 0, 0.3), rgba(0, 0, 255, 0.4)),
+    url('/assets/img/discoteca2.jpg') no-repeat center center / cover;
+    position: relative;
 }
 ion-header{
     ion-toolbar{
         --background: transparent;
         color: #fff;
+        font-family: bebas neue;
     }
 }
 
 
-.fixed-card-center{
+.form-card{
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 500px;
+    height: 70vh;
+    min-height: 70vh;
+    padding-top: 25px;
+    overflow: auto;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    margin: auto auto 0 auto;
+    background-color: #8d7eff88;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    ion-item{
+        --ion-item-background: rgba(0, 0, 0, 0.371);
+        margin-bottom: 5px;
+        border-radius: 5px;
+        color: #fff;
+        &:has(ion-icon){
+            --ion-item-background: transparent;
+        }
+        ion-icon{
+            color: #fff;
+        }
+    }
     *{
         font-family: bebas neue;
     }
-    margin: auto;
-}
-
-.center-flex-content{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    background: linear-gradient(45deg, rgba(255, 0, 0, 0.3), rgba(0, 0, 255, 0.4)),
-                url('/assets/img/discoteca2.jpg') no-repeat center center / cover;
-
-    ion-list{
-        background-color: transparent;
-
-        ion-item{
-            --ion-item-background: rgba(0, 0, 0, 0.371);
-            margin-bottom: 5px;
-            border-radius: 5px;
-            color: #fff;
-            &:has(ion-icon){
-                --ion-item-background: transparent;
-            }
-            ion-icon{
-                color: #fff;
-            }
-        }
+    ion-button{
+        font-size: 18px;
     }
 }
-
 .qr-icon{
     font-size: 50px;
     margin: auto;

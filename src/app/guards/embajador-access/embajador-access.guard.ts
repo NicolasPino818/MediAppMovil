@@ -16,8 +16,8 @@ export class EmbajadorAccessGuard implements CanActivate {
       this.rol = storageRol;
     })
     if(this.rol != 'embajador'){
-      //this.router.navigate(['/login']);
+      this.router.navigate(['/login']);
     }
-    return true/*this.rol == 'embajador'*/;
+    return this.rol == 'embajador';
   }
 }

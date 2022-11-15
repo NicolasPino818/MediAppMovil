@@ -17,7 +17,7 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule, 
     IonicStorageModule.forRoot(),
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

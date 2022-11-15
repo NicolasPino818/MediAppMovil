@@ -19,8 +19,10 @@
     "@angular/platform-browser": "^14.0.0",
     "@angular/platform-browser-dynamic": "^14.0.0",
     "@angular/router": "^14.0.0",
+    "@capacitor-community/barcode-scanner": "^3.0.0",
     "@capacitor/android": "4.4.0",
     "@capacitor/app": "4.1.0",
+    "@capacitor/clipboard": "^4.0.1",
     "@capacitor/core": "4.4.0",
     "@capacitor/haptics": "4.0.1",
     "@capacitor/ios": "4.4.0",
@@ -29,6 +31,7 @@
     "@ionic/angular": "^6.1.9",
     "@ionic/storage-angular": "^3.0.6",
     "ionicons": "^6.0.3",
+    "qrcode": "^1.5.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"
