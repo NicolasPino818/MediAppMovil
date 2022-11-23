@@ -45,6 +45,11 @@
       {{qrData.emisor}}
     </ion-item>
 
+    <ion-item lines="none">
+      <ion-text slot="start">id: </ion-text>
+      {{qrData.id}}
+    </ion-item>
+
     <ion-button expand="full" (click)="admitirEntrada(qrData.id)"
       >Habilitar Entrada</ion-button
     >
