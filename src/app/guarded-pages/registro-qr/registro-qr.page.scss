@@ -1,6 +1,5 @@
 ion-content{
-    --background: linear-gradient(45deg, rgba(255, 0, 0, 0.3), rgba(0, 0, 255, 0.4)),
-    url('/assets/img/discoteca2.jpg') no-repeat center center / cover;
+    --background: url('/assets/img/fondo2.jpg') no-repeat center center / cover;
     position: relative;
 }
 ion-header{
@@ -19,26 +18,25 @@ ion-header{
     bottom: 0;
     width: 100%;
     max-width: 500px;
-    height: 70vh;
-    min-height: 70vh;
+    height: 75vh;
+    min-height: 75vh;
     padding-top: 25px;
     overflow: auto;
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
     margin: auto auto 0 auto;
-    background-color: #8d7eff88;
     padding-top: 40px;
     padding-bottom: 40px;
+    background-color: rgba(255, 255, 255);
     ion-item{
-        --ion-item-background: rgba(0, 0, 0, 0.371);
+        --ion-item-background: transparent;
         margin-bottom: 5px;
         border-radius: 5px;
-        color: #fff;
         &:has(ion-icon){
             --ion-item-background: transparent;
         }
-        ion-icon{
-            color: #fff;
+        &:has(ion-input){
+            font-size: 20px;
         }
     }
     *{
@@ -48,7 +46,10 @@ ion-header{
         font-size: 18px;
     }
 }
-.qr-icon{
-    font-size: 50px;
+ion-list{
     margin: auto;
+    text-align: center;
+    .qr-icon{
+        font-size: 50px;
+    }
 }

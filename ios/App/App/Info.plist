@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-        <string>mediApp</string>
+        <string>MediApp</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -47,7 +47,6 @@
 	<true/>
 
 	<key>NSCameraUsageDescription</key>
- 	<string>To be able to scan QRcodes</string>
-
+ 	<string>We are using the camera To let our users to be able to scan QRcodes</string>
 </dict>
 </plist>

@@ -13,9 +13,13 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, 
-    IonicModule.forRoot(), 
+    IonicModule.forRoot({
+      swipeBackEnabled: false
+    }), 
     AppRoutingModule, 
-    IonicStorageModule.forRoot(),
+    IonicStorageModule.forRoot({
+      name: 'mediterraneoStorage'
+    }),
     HttpClientModule,
     FormsModule,
   ],

@@ -1,11 +1,44 @@
-
+ion-content{ 
+    --background: linear-gradient(45deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), 
+    url('/assets/img/fondo1.jpg') no-repeat center center / cover;
+}
 .scanActive{
     --background: #00000000;
 }
-.scanDeactive{}
+
+.logo{
+    max-width: 100px;
+    margin: auto;
+}
 
 ion-content{
     position: relative;
+}
+
+.data-list{
+    background-color: transparent;
+    ion-item:first-of-type{
+        --ion-item-background: #fff;
+        width: fit-content;
+        ion-img{
+            margin: 5px 0;
+        }
+    }
+    ion-item{
+        --ion-item-background: rgba(37, 37, 37, 0.7);
+        border-radius: 5px;
+        color: #fff;
+        border-radius: 15px;
+        max-width: 500px;
+        margin: auto;
+        margin-bottom: 5px;
+        ion-text{
+            margin: auto;
+        }
+        ion-button{
+            color: #fff;
+        }
+    }
 }
 
 

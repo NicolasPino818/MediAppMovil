@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoadingController, Platform } from '@ionic/angular';
+import { Platform } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
 import { StorageService } from './services/storage-service/storage.service';
 
@@ -14,8 +14,9 @@ export class AppComponent {
     private storage:Storage, 
     private storageService:StorageService,
     private router:Router) {
+    
+    this.storage.create();
     this.plt.ready().then(()=>{
-      this.storage.create();
       this.storageService.getRol().then(rol=>{
         if(rol == 'embajador') this.router.navigate(['tabs','registro-qr']);
         else if(rol == 'scanner') this.router.navigate(['tabs','scanner-qr']);

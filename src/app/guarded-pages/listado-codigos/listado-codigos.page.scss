@@ -1,6 +1,5 @@
 ion-content{
-    --background: linear-gradient(45deg, rgba(255, 0, 0, 0.3), rgba(0, 0, 255, 0.4)),
-    url('/assets/img/discoteca.jpg') no-repeat center center / cover;
+    --background: url('/assets/img/fondo1.jpg') no-repeat center center / cover;
 }
 ion-header{
     ion-toolbar{
@@ -14,11 +13,12 @@ ion-header{
     background-color: transparent;
     ion-item{
         --ion-item-background: rgba(37, 37, 37, 0.7);
-        margin-bottom: 5px;
         border-radius: 5px;
         color: #fff;
         border-radius: 15px;
-
+        max-width: 500px;
+        margin: auto;
+        margin-bottom: 5px;
         ion-text{
             margin: auto;
         }

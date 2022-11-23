@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { NavController } from '@ionic/angular';
 import { StorageService } from 'src/app/services/storage-service/storage.service';
 
 @Component({
@@ -7,15 +7,10 @@ import { StorageService } from 'src/app/services/storage-service/storage.service
   templateUrl: './tabs.page.html',
   styleUrls: ['./tabs.page.scss'],
 })
-export class TabsPage implements OnInit {
+export class TabsPage {
 
   rol:string;
-  constructor(private storageService: StorageService,private router:Router) {
-    
-  }
-
-  ngOnInit() {
-  }
+  constructor(private storageService: StorageService,private navCtrl:NavController) {}
 
   ionViewWillEnter(){
     this.storageService.getRol().then(rol=>{
@@ -26,7 +21,8 @@ export class TabsPage implements OnInit {
 
   logOut(){
     this.storageService.logOutDestroyData();
-    this.router.navigate(['/login']);
+    this.navCtrl.pop();
+    this.navCtrl.navigateBack('/login');
   }
 
 }

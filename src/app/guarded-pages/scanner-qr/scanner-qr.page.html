@@ -10,19 +10,47 @@
     Ecanear
   </ion-button>
 
-  <ion-list *ngIf="qrData && !scanActive">
-    <ion-item> Nombre: {{qrData.nombre}} </ion-item>
+  <ion-list class="data-list" *ngIf="qrData && !scanActive">
+    <ion-item lines="none">
+      <ion-img class="logo" src="/assets/img/icons_png_medi_1.png"></ion-img>
+    </ion-item>
 
-    <ion-item> Rut: {{qrData.rut}} </ion-item>
+    <ion-item lines="none">
+      <ion-text slot="start">Nombre: </ion-text>
+      {{qrData.nombre}}
+    </ion-item>
 
-    <ion-item> Emitido: {{qrData.fecha_emision}} </ion-item>
+    <ion-item lines="none">
+      <ion-text slot="start">Rut: </ion-text>
+      {{qrData.rut}}
+    </ion-item>
 
-    <ion-item> Hora de caducidad: {{qrData.valido_hasta}} </ion-item>
+    <ion-item lines="none">
+      <ion-text slot="start">Emitido: </ion-text>
+      {{qrData.fecha_emision}}
+    </ion-item>
 
-    <ion-button expand="full">Habilitar Entrada</ion-button>
+    <ion-item lines="none">
+      <ion-text slot="start">Dia del evento: </ion-text>
+      {{qrData.fecha_evento}}
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-text slot="start">Caduca: </ion-text>
+      {{qrData.valido_hasta}}
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-text slot="start">Emisor: </ion-text>
+      {{qrData.emisor}}
+    </ion-item>
+
+    <ion-button expand="full" (click)="admitirEntrada(qrData.id)"
+      >Habilitar Entrada</ion-button
+    >
   </ion-list>
 
-  <ion-button class="" expand="full" *ngIf="scanActive" (click)="stopScan()">
+  <ion-button expand="full" *ngIf="scanActive" (click)="stopScan()">
     Dejar de escanear
   </ion-button>
   <ion-icon *ngIf="scanActive" class="scan-icon" name="scan-outline"></ion-icon>

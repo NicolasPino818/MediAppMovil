@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'mediApp',
+  appId: 'mediClub.App',
+  appName: 'MediApp',
   webDir: 'www',
   bundledWebRuntime: false
 };

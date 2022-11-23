@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Platform } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
+import { BehaviorSubject } from 'rxjs';
 
 const JWT_KEY = 'TOKEN_KEY';
 const USER = 'USER';
@@ -10,11 +12,20 @@ const ROL_KEY = 'ROL'
   providedIn: 'root'
 })
 export class StorageService {
-
-  constructor(private storage: Storage) {}
+  tokenObs = new BehaviorSubject(null);
+  constructor(private storage: Storage,private plt:Platform) {
+    this.plt.ready().then(()=>{
+      this.getToken().then(token=>{
+        if(token){
+          this.tokenObs.next(atob(token));
+        }
+      })
+    })
+  }
 
   setToken(token:string){
-    this.storage.set(JWT_KEY,token);
+    this.tokenObs.next(token);
+    this.storage.set(JWT_KEY,btoa(token));
   }
   getToken(): Promise<string> {
     return this.storage.get(JWT_KEY);

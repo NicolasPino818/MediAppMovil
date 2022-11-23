@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">mediApp</string>
-    <string name="title_activity_main">mediApp</string>
-    <string name="package_name">io.ionic.starter</string>
-    <string name="custom_url_scheme">io.ionic.starter</string>
+    <string name="app_name">MediApp</string>
+    <string name="title_activity_main">MediApp</string>
+    <string name="package_name">mediClub.App</string>
+    <string name="custom_url_scheme">mediClub.App</string>
 </resources>

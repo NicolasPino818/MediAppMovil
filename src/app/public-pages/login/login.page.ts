@@ -1,6 +1,9 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoadingController, AlertController } from '@ionic/angular';
+import { ApiService } from 'src/app/services/api-service/api.service';
 import { StorageService } from 'src/app/services/storage-service/storage.service';
 
 @Component({
@@ -12,7 +15,12 @@ export class LoginPage implements OnInit {
 
   loginForm: FormGroup;
 
-  constructor(private storageService: StorageService,private router:Router) { }
+  constructor(
+    private storageService: StorageService,
+    private router:Router,
+    private api:ApiService,
+    private alertCtrl:AlertController,
+    private loading:LoadingController) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -20,13 +28,69 @@ export class LoginPage implements OnInit {
       password: new FormControl()
     })
   }
-  login(){
-    this.storageService.setRol('embajador');
-    this.router.navigate(['tabs','registro-qr']);
+
+  async loginAlert(mensaje: string){
+    const alert = await this.alertCtrl.create({
+      header: 'Credenciales',
+      message: mensaje,
+      buttons: ['Entendido']
+    })
+    alert.present();
   }
 
-  login2(){
-    this.storageService.setRol('scanner');
-    this.router.navigate(['tabs','scanner-qr']);
+  async loadingAnim(){
+    const load = await this.loading.create({
+      message: 'Iniciando Sesión...',
+      cssClass: 'custom-loading'
+    })
+    load.present();
+  }
+
+  async login(){
+    if(this.loginForm.valid && this.loginForm.controls.usuario.value != null){
+      this.loadingAnim().then(()=>{
+        this.api.login(this.loginForm.controls.usuario.value,this.loginForm.controls.password.value)
+        .subscribe(loginData=>{
+          if(loginData.token){
+
+            this.storageService.setToken(loginData.token);
+            this.storageService.setRol(loginData.userData.rol);
+            this.storageService.setUser(loginData.userData.usuario);
+
+            if (loginData.userData.rol == 'embajador') {
+              this.router.navigate(['tabs','registro-qr']);
+
+            }else if(loginData.userData.rol == 'scanner'){
+              this.router.navigate(['tabs','scanner-qr']);
+
+            }
+          }else{
+            if(loginData.code == '1006'){
+              this.loginAlert('La contraseña es incorrecta');
+            }else if(loginData.code == '1007'){
+              this.loginAlert('El usuario no existe');
+            }
+          }
+          this.loading.dismiss();
+        },async (error:HttpErrorResponse)=>{
+          const alert = await this.alertCtrl.create({
+            header: 'Servidor',
+            message: 'Estamos teniendo problemas con el servidor',
+            buttons: ['Ok']
+          })
+          alert.present();
+          console.log(error)
+          this.loading.dismiss();
+        })
+      })
+      
+    }else{
+      const alert = await this.alertCtrl.create({
+        header: 'Datos',
+        message: 'Asegurese de llenar los datos',
+        buttons: ['Ok']
+      })
+      alert.present();
+    }
   }
 }
