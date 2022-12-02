@@ -1,20 +1,44 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title class="ion-text-center">Mis codigos</ion-title>
+    <ion-text class="ion-text-center title">Mis codigos</ion-text>
+
+    <ion-buttons slot="end">
+      <ion-button [disabled]="refreshed" expand="full" (click)="refresh()">
+        <ion-icon name="refresh-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen="true">
-  <ion-list class="listado">
-    <ion-item lines="none" *ngFor="let dato of datosPrueba">
-      <ion-text class="ion-text-center">{{dato.rut}}</ion-text>
-      <ion-text slot="start">{{dato.nombre}}</ion-text>
-
-      <ion-buttons class="ion-no-margin" slot="end">
-        <ion-button class="ion-no-margin">
-          <ion-text> Link <ion-icon name="copy-outline"></ion-icon> </ion-text>
-        </ion-button>
-      </ion-buttons>
+  <ion-list *ngIf="listado" class="listado">
+    <ion-item lines="none" class="ion-text-center">
+      <ion-label> Fecha de hoy: {{fecha}} </ion-label>
     </ion-item>
   </ion-list>
+
+  <ion-accordion-group>
+    <ion-accordion [value]="i" *ngFor="let dato of listado; let i = index">
+      <ion-item lines="none" slot="header" color="list">
+        <ion-label class="ion-text-capitalize"
+          >Nombre: {{dato.nombre}}</ion-label
+        >
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <ion-item lines="none" class="ion-text-center">
+          <ion-label>Rut: {{dato.rut}}</ion-label>
+        </ion-item>
+
+        <ion-item
+          lines="none"
+          class="ion-text-center"
+          (click)="copyLink(dato.link)"
+        >
+          <ion-label>
+            Copiar Link &nbsp; <ion-icon name="copy-outline"></ion-icon>
+          </ion-label>
+        </ion-item>
+      </div>
+    </ion-accordion>
+  </ion-accordion-group>
 </ion-content>

@@ -28,3 +28,9 @@ export interface ILoginResponse{
     reason: string,
     code:string
 }
+
+export interface IlistadoQr{
+    link: string,
+    nombre: string,
+    rut: string
+}

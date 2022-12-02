@@ -54,6 +54,7 @@ export class ScannerQrPage implements OnInit, AfterViewInit, OnDestroy {
     const alowed = await this.checkPermissions();
 
     if(alowed){
+      this.qrData = null;
       this.scanActive = true;
       BarcodeScanner.hideBackground(); // make background of WebView transparent
 

@@ -1,50 +1,71 @@
-import { Component, OnInit,OnDestroy } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { IlistadoQr } from 'src/app/interfaces/interfaces';
+import { ApiService } from 'src/app/services/api-service/api.service';
+import { StorageService } from 'src/app/services/storage-service/storage.service';
+import { Clipboard } from '@capacitor/clipboard';
+import { ToastController } from '@ionic/angular';
+import { GlobalService } from 'src/app/services/global-service/global.service';
 
 @Component({
   selector: 'app-listado-codigos',
   templateUrl: './listado-codigos.page.html',
   styleUrls: ['./listado-codigos.page.scss'],
 })
-export class ListadoCodigosPage implements OnInit, OnDestroy {
+export class ListadoCodigosPage implements OnInit {
 
-  datosPrueba = [
-    {
-      id: 12345,
-      nombre: 'john',
-      rut: '12.345.678-9',
-      url: 'www.dominion.com/qr/12345'
-    },
-    {
-      id: 12346,
-      nombre: 'bob',
-      rut: '12.345.678-9',
-      url: 'www.dominion.com/qr/12345'
-    },
-    {
-      id: 12347,
-      nombre: 'dave',
-      rut: '12.345.678-9',
-      url: 'www.dominion.com/qr/12345'
-    },
-    {
-      id: 12348,
-      nombre: 'susan',
-      rut: '12.345.678-9',
-      url: 'www.dominion.com/qr/12345'
-    }
-  ]
+  listado: IlistadoQr[];
+  date = new Date();
+  fecha = this.date.getDate() +'-'+(this.date.getMonth()+1)+'-'+ this.date.getFullYear();
 
-  constructor() { }
+  
+
+  refreshed:boolean = false;
+
+  constructor(
+    private api:ApiService,
+    private storage:StorageService,
+    private toast:ToastController,
+    private globalService:GlobalService) { }
+
+  async presentToast() {
+    const toast = await this.toast.create({
+      message: 'Link Copiado al Porta Papeles',
+      position: 'top',
+      icon: 'copy-outline',
+      duration: 3000
+    });
+
+    await toast.present();
+  }
 
   ngOnInit() {
+    this.refresh();
   }
 
-  ionViewWillEnter(){
-    //console.log('will enter listado-qr')
+  refresh(){
+    this.refreshed = true;
+    this.storage.getUser().then(usuario=>{
+      if(usuario){
+        this.api.getListadoQR(usuario,this.fecha).subscribe((res)=>{
+          if(res){
+            this.listado = res;
+          }
+        },(error:HttpErrorResponse)=>{
+          console.log(error);
+        })
+      }
+    })
+    setTimeout(()=>{
+      this.refreshed = false;
+    },2000);
   }
 
-  ngOnDestroy(){
-    //console.log('destroy listado-qr')
+  async copyLink(link:string){
+    await Clipboard.write({
+      string: link
+    });
+    this.presentToast();
   }
 
 }

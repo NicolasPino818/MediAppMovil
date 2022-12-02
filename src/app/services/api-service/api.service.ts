@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { StorageService } from '../storage-service/storage.service';
 import { environment } from 'src/environments/environment';
-import { ICrearQrRes, ILoginResponse, IQRUpdateStatus } from 'src/app/interfaces/interfaces';
+import { ICrearQrRes, IlistadoQr, ILoginResponse, IQRUpdateStatus } from 'src/app/interfaces/interfaces';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -40,7 +40,13 @@ export class ApiService {
 
   login(usuario:string,password:string): Observable<ILoginResponse>{
     //post request para poder validar las credenciales del login y asi obtener token de JWT y acceder a la api
-    return this.http.post<ILoginResponse>(`${environment.apiBaseUrl}/login`, {usuario, password}, this.header);
+    let fecha_login = new Date().getDate() +'-'+(new Date().getMonth()+1)+'-'+ new Date().getFullYear();
+    let hora_login = ((new Date().getHours()).toString().length == 1 ? '0'+new Date().getHours(): new Date().getHours())+ ':' + ((new Date().getMinutes()).toString().length == 1 ? '0'+new Date().getMinutes(): new Date().getMinutes())  + ':' + new Date().getSeconds();
+    return this.http.post<ILoginResponse>(`${environment.apiBaseUrl}/login`, {usuario, password,fecha_login,hora_login}, this.header);
+  }
+
+  getListadoQR(usuario:string,fecha:string):Observable<IlistadoQr[]>{
+    return this.http.get<IlistadoQr[]>(`${environment.apiBaseUrl}/listado/${usuario}/${fecha}`,this.headerOptions);
   }
 
 }

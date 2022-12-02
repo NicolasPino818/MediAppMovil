@@ -2,10 +2,22 @@ ion-content{
     --background: url('/assets/img/fondo1.jpg') no-repeat center center / cover;
 }
 ion-header{
+    position: relative;
+    .title{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        font-size: 23px;
+    }
     ion-toolbar{
         --background: transparent;
         color: #fff;
         font-family: bebas neue;
+
+        ion-icon{
+            color: #fff;
+        }
     }
 }
 
@@ -19,10 +31,23 @@ ion-header{
         max-width: 500px;
         margin: auto;
         margin-bottom: 5px;
-        ion-text{
-            margin: auto;
-        }
-        ion-button{
+        overflow: auto;
+    }
+}
+
+ion-accordion{
+    background-color: transparent !important;
+
+    ion-item{
+        --ion-item-background: rgba(37, 37, 37, 0.7);
+        border-radius: 5px;
+        color: #fff;
+        border-radius: 15px;
+        max-width: 500px;
+        margin: auto;
+        margin-bottom: 5px;
+        overflow: auto;
+        ion-icon{
             color: #fff;
         }
     }

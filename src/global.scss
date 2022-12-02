@@ -30,6 +30,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css');
 
+:root{
+    --ion-color-list: #252525b7;
+	--ion-color-list-rgb: 37,37,183;
+	--ion-color-list-contrast: #ffffff;
+	--ion-color-list-contrast-rgb: 255,255,255;
+	--ion-color-list-shade: #2121a1;
+	--ion-color-list-tint: #3b3bbe;
+}
+
+.ion-color-list {
+    --ion-color-base: var(--ion-color-list);
+    --ion-color-base-rgb: var(--ion-color-list-rgb);
+    --ion-color-contrast: var(--ion-color-list-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-list-contrast-rgb);
+    --ion-color-shade: var(--ion-color-list-shade);
+    --ion-color-tint: var(--ion-color-list-tint);
+  }
+
 
 /*Global css*/
 .fixed-card{
