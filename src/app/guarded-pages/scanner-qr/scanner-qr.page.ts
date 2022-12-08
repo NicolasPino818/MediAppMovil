@@ -46,6 +46,9 @@ export class ScannerQrPage implements OnInit, AfterViewInit, OnDestroy {
         })
         toast.present();
         this.qrData = null;
+      }else if(res.updatedStatus == '0'){
+        this.qrData = null;
+        this.escaneadoAlert();
       }
     })
   }

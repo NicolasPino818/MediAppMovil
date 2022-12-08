@@ -35,7 +35,7 @@ export class ApiService {
 
   invalidarCodigoQR(id:string):Observable<IQRUpdateStatus>{
     //put request para actulizar estado del codigo a 'escaneado' e invalidarlo
-    return this.http.post<IQRUpdateStatus>(`${environment.apiBaseUrl}/codigo_escaneado/${id}`,this.headerOptions);
+    return this.http.put<IQRUpdateStatus>(`${environment.apiBaseUrl}/codigo_escaneado/${id}`,{},this.headerOptions);
   }
 
   login(usuario:string,password:string): Observable<ILoginResponse>{

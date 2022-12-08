@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { StorageService } from 'src/app/services/storage-service/storage.service';
+import { TimeoutService } from 'src/app/services/timeout/timeout.service';
 
 @Component({
   selector: 'app-tabs',
@@ -10,7 +11,7 @@ import { StorageService } from 'src/app/services/storage-service/storage.service
 export class TabsPage {
 
   rol:string;
-  constructor(private storageService: StorageService,private navCtrl:NavController) {}
+  constructor(private storageService: StorageService,private navCtrl:NavController,private timeout:TimeoutService) {}
 
   ionViewWillEnter(){
     this.storageService.getRol().then(rol=>{
@@ -20,6 +21,7 @@ export class TabsPage {
 
 
   logOut(){
+    this.timeout.timeoutStop();
     this.storageService.logOutDestroyData();
     this.navCtrl.pop();
     this.navCtrl.navigateBack('/login');

@@ -47,6 +47,6 @@
 	<true/>
 
 	<key>NSCameraUsageDescription</key>
- 	<string>We are using the camera To let our users to be able to scan QRcodes</string>
+ 	<string>To let you scan QRcodes</string>
 </dict>
 </plist>

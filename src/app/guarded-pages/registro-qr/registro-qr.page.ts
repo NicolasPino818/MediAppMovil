@@ -15,6 +15,7 @@ export class RegistroQrPage implements OnInit {
 
   datosClienteForm:FormGroup;
   linkQR:string;
+  isSubmit: boolean = false;
   constructor(private alertCtrl: AlertController, private api:ApiService, private toast: ToastController,private storage:StorageService) { }
 
   ngOnInit() {
@@ -78,6 +79,7 @@ export class RegistroQrPage implements OnInit {
   async generarCodigo(){
     if (!this.datosClienteForm.invalid) {
       let emisor: string;
+      this.isSubmit = true;
       await this.storage.getUser().then(user=>{
         emisor = user;
       })
@@ -100,9 +102,10 @@ export class RegistroQrPage implements OnInit {
         }else{
           this.linkQR = response.url;
         }
-        
+        this.isSubmit = false;
       },(error: HttpErrorResponse)=>{
         this.qrAlert();
+        this.isSubmit = false;
       })
     }
     else this.datosAlert();

@@ -10,6 +10,7 @@ ion-header{
         transform: translate(-50%,-50%);
         font-size: 23px;
     }
+    /*
     ion-toolbar{
         --background: transparent;
         color: #fff;
@@ -18,6 +19,10 @@ ion-header{
         ion-icon{
             color: #fff;
         }
+    }
+    */
+    ion-toolbar{
+        font-family: bebas neue;
     }
 }
 

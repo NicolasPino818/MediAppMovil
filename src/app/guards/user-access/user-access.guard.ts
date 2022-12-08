@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { StorageService } from 'src/app/services/storage-service/storage.service';
 import { AlertController, NavController, Platform } from '@ionic/angular';
+import { TimeoutService } from 'src/app/services/timeout/timeout.service';
 
 const helper = new JwtHelperService();
 
@@ -14,7 +15,11 @@ const helper = new JwtHelperService();
 })
 export class UserAccessGuard implements CanActivate {
 
-  constructor(private storage: StorageService, private plt:Platform, private navCtrl:NavController, private alertCtrl:AlertController){
+  constructor(private storage: StorageService, 
+    private plt:Platform, 
+    private navCtrl:NavController, 
+    private alertCtrl:AlertController,
+    private timeout:TimeoutService){
 
   }
 
@@ -33,6 +38,8 @@ export class UserAccessGuard implements CanActivate {
               buttons: ['Entendido']
             })
             alert.present();
+          }else{
+            this.timer(helper.getTokenExpirationDate(decodedToken));
           }
         }else{
           auth = false;
@@ -44,6 +51,13 @@ export class UserAccessGuard implements CanActivate {
       this.navCtrl.navigateBack('/login');
     }
     return auth;
+  }
+
+
+  timer(expireDate:Date){
+    var date1 = new Date(); // current date
+    var timeDiff = Math.abs(expireDate.getTime() - date1.getTime());
+    this.timeout.timeoutStart(timeDiff);
   }
 }
 

@@ -37,7 +37,12 @@
         </ion-list>
       </ion-item>
 
-      <ion-button type="submit" class="ion-margin" expand="block">
+      <ion-button
+        [disabled]="isSubmit"
+        type="submit"
+        class="ion-margin"
+        expand="block"
+      >
         Generar Link de Codigo QR
       </ion-button>
 

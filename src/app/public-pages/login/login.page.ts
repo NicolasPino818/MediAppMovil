@@ -73,12 +73,21 @@ export class LoginPage implements OnInit {
           }
           this.loading.dismiss();
         },async (error:HttpErrorResponse)=>{
-          const alert = await this.alertCtrl.create({
-            header: 'Servidor',
-            message: 'Estamos teniendo problemas con el servidor',
-            buttons: ['Ok']
-          })
-          alert.present();
+          if(error.status == 403){
+            const alert = await this.alertCtrl.create({
+              header: 'Prohibido',
+              message: 'Usted no esta autorizado para entrar a esta App',
+              buttons: ['Ok']
+            })
+            alert.present();
+          }else{
+            const alert = await this.alertCtrl.create({
+              header: 'Servidor',
+              message: 'Estamos teniendo problemas con el servidor',
+              buttons: ['Ok']
+            })
+            alert.present();
+          }
           console.log(error)
           this.loading.dismiss();
         })
