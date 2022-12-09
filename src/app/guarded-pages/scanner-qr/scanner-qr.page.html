@@ -12,10 +12,6 @@
 
   <ion-list class="data-list" *ngIf="qrData && !scanActive">
     <ion-item lines="none">
-      <ion-img class="logo" src="/assets/img/icons_png_medi_1.png"></ion-img>
-    </ion-item>
-
-    <ion-item lines="none">
       <ion-text slot="start">Nombre:&nbsp; </ion-text>
       {{qrData.nombre}}
     </ion-item>
@@ -48,6 +44,8 @@
     <ion-button expand="full" (click)="admitirEntrada(qrData.id)">
       Habilitar Entrada
     </ion-button>
+
+    <ion-button expand="full" (click)="clearData()"> Limpiar Datos </ion-button>
   </ion-list>
 
   <ion-button expand="full" *ngIf="scanActive" (click)="stopScan()">

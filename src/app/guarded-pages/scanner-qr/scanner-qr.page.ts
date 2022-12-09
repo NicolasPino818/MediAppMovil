@@ -29,7 +29,7 @@ export class ScannerQrPage implements OnInit, AfterViewInit, OnDestroy {
   async escaneadoAlert(){
     const alert = await this.alertCtrl.create({
       header: 'Escaneado',
-      message: "Este codigo ya ha sido escaneado antes",
+      message: "Este codigo ya ha sido usado antes",
       buttons: ['Ok']
     })
     alert.present();
@@ -40,7 +40,7 @@ export class ScannerQrPage implements OnInit, AfterViewInit, OnDestroy {
       if(res.updatedStatus == '1'){
         const toast = await this.toast.create({
           duration: 1500,
-          message: 'QR actualizado a "Escaneado"',
+          message: 'QR actualizado',
           icon: 'qr-code-outline',
           position: 'top'
         })
@@ -112,6 +112,10 @@ export class ScannerQrPage implements OnInit, AfterViewInit, OnDestroy {
     BarcodeScanner.showBackground();
     BarcodeScanner.stopScan();
     this.scanActive = false;
+  }
+
+  clearData(){
+    this.qrData = null;
   }
 
 }

@@ -17,13 +17,14 @@ ion-content{
 
 .data-list{
     background-color: transparent;
+    /*
     ion-item:first-of-type{
         --ion-item-background: #fff;
         width: fit-content;
         ion-img{
             margin: 5px 0;
         }
-    }
+    }*/
     ion-item{
         --ion-item-background: rgba(37, 37, 37, 0.7);
         border-radius: 5px;
