@@ -138,7 +138,7 @@ export class RegistroQrPage implements OnInit {
         jueves.setDate(jueves.getDate() + 4);
 
         fecha_evento = `Miercoles ${evento.getDate()}-${(evento.getMonth() + 1)}-${evento.getFullYear()}`;
-        fecha_caducidad = `Jueves ${jueves.getDate()}-${(jueves.getMonth() + 1)}-${jueves.getFullYear()} a las 00:00`;
+        fecha_caducidad = `Jueves ${jueves.getDate()}-${(jueves.getMonth() + 1)}-${jueves.getFullYear()}`;
         
         break;
       case 1: //Lunes
@@ -149,7 +149,7 @@ export class RegistroQrPage implements OnInit {
         jueves.setDate(jueves.getDate() + 3);
 
         fecha_evento = `Miercoles ${evento.getDate()}-${(evento.getMonth() + 1)}-${evento.getFullYear()}`;
-        fecha_caducidad = `Jueves ${jueves.getDate()}-${(jueves.getMonth() + 1)}-${jueves.getFullYear()} a las 00:00`;
+        fecha_caducidad = `Jueves ${jueves.getDate()}-${(jueves.getMonth() + 1)}-${jueves.getFullYear()}`;
         
         break;
       case 2: //Martes
@@ -160,7 +160,7 @@ export class RegistroQrPage implements OnInit {
         jueves.setDate(jueves.getDate()+2);
 
         fecha_evento = `Miercoles ${evento.getDate()}-${(evento.getMonth() + 1)}-${evento.getFullYear()}`;
-        fecha_caducidad = `Jueves ${jueves.getDate()}-${(jueves.getMonth() + 1)}-${jueves.getFullYear()} a las 00:00`;
+        fecha_caducidad = `Jueves ${jueves.getDate()}-${(jueves.getMonth() + 1)}-${jueves.getFullYear()}`;
         
         break;
       case 3: //Miercoles
@@ -171,7 +171,7 @@ export class RegistroQrPage implements OnInit {
         jueves.setDate(jueves.getDate()+1);
         
         fecha_evento = `Miercoles ${evento.getDate()}-${(evento.getMonth() + 1)}-${evento.getFullYear()}`;
-        fecha_caducidad = `Jueves ${jueves.getDate()}-${(jueves.getMonth() + 1)}-${jueves.getFullYear()} a las 00:00`;
+        fecha_caducidad = `Jueves ${jueves.getDate()}-${(jueves.getMonth() + 1)}-${jueves.getFullYear()}`;
         
         break;
       case 4: //Jueves
@@ -182,7 +182,7 @@ export class RegistroQrPage implements OnInit {
         viernes.setDate(today.getDate()+1);
 
         fecha_evento = `Jueves ${evento.getDate()}-${(evento.getMonth() + 1)}-${evento.getFullYear()}`;
-        fecha_caducidad = `Viernes ${viernes.getDate()}-${(viernes.getMonth() + 1)}-${viernes.getFullYear()} a las 00:00`;
+        fecha_caducidad = `Viernes ${viernes.getDate()}-${(viernes.getMonth() + 1)}-${viernes.getFullYear()}`;
         
         break;
       case 5: //Viernes
@@ -193,7 +193,7 @@ export class RegistroQrPage implements OnInit {
         sabado.setDate(sabado.getDate()+1);
 
         fecha_evento = `Viernes ${evento.getDate()}-${(evento.getMonth() + 1)}-${evento.getFullYear()}`;
-        fecha_caducidad = `Sabado ${sabado.getDate()}-${(sabado.getMonth() + 1)}-${sabado.getFullYear()} a las 00:30`;
+        fecha_caducidad = `Sabado ${sabado.getDate()}-${(sabado.getMonth() + 1)}-${sabado.getFullYear()}`;
         
         break;       
       case 6: //Sabado
@@ -204,7 +204,7 @@ export class RegistroQrPage implements OnInit {
         domingo.setDate(domingo.getDate()+1);
 
         fecha_evento = `Sabado ${evento.getDate()}-${(evento.getMonth() + 1)}-${evento.getFullYear()}`;
-        fecha_caducidad = `Domingo ${domingo.getDate()}-${(domingo.getMonth() + 1)}-${domingo.getFullYear()} a las 00:30`; 
+        fecha_caducidad = `Domingo ${domingo.getDate()}-${(domingo.getMonth() + 1)}-${domingo.getFullYear()}`; 
         
         break;  
     }

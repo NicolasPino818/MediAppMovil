@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { CanActivate, Router} from '@angular/router';
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { StorageService } from 'src/app/services/storage-service/storage.service';
 import { AlertController, NavController, Platform } from '@ionic/angular';
@@ -19,6 +18,7 @@ export class UserAccessGuard implements CanActivate {
     private plt:Platform, 
     private navCtrl:NavController, 
     private alertCtrl:AlertController,
+    private router:Router,
     private timeout:TimeoutService){
 
   }
@@ -30,16 +30,22 @@ export class UserAccessGuard implements CanActivate {
       .then(async token=>{
         if(token){
           let decodedToken = atob(token);
-          auth= !helper.isTokenExpired(decodedToken);
           if(helper.isTokenExpired(decodedToken)){
             const alert = await this.alertCtrl.create({
               header: 'Sesión expirada',
-              message: 'Su sesión ha caducado, para continuar inicie sesión nuevamente',
+              message: 'Su sesión ha caducado, para continuar inicie sesión nuevamente 2',
               buttons: ['Entendido']
             })
             alert.present();
+            auth = false;
           }else{
+            this.storage.getRol().then(rol=>{
+              if(rol == 'embajador') this.router.navigate(['tabs','registro-qr']);
+              else if(rol == 'scanner') this.router.navigate(['tabs','scanner-qr']);
+              else this.navCtrl.navigateBack('/login');
+            })
             this.timer(helper.getTokenExpirationDate(decodedToken));
+            auth = true;
           }
         }else{
           auth = false;

@@ -57,13 +57,8 @@ export class LoginPage implements OnInit {
             this.storageService.setRol(loginData.userData.rol);
             this.storageService.setUser(loginData.userData.usuario);
 
-            if (loginData.userData.rol == 'embajador') {
-              this.router.navigate(['tabs','registro-qr']);
+            this.router.navigate(['tabs']);
 
-            }else if(loginData.userData.rol == 'scanner'){
-              this.router.navigate(['tabs','scanner-qr']);
-
-            }
           }else{
             if(loginData.code == '1006'){
               this.loginAlert('La contraseña es incorrecta');

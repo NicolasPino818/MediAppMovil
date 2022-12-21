@@ -1,27 +1,24 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnDestroy } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
-import { StorageService } from './services/storage-service/storage.service';
+import { TimeoutService } from './services/timeout/timeout.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy {
   constructor(private plt:Platform, 
     private storage:Storage, 
-    private storageService:StorageService,
-    private router:Router) {
+    private timer: TimeoutService) {
     
     this.storage.create();
-    this.plt.ready().then(()=>{
-      this.storageService.getRol().then(rol=>{
-        if(rol == 'embajador') this.router.navigate(['tabs','registro-qr']);
-        else if(rol == 'scanner') this.router.navigate(['tabs','scanner-qr']);
-        else this.router.navigate(['/login']);
-      })
-    })
+    
   }
+
+  ngOnDestroy(): void {
+    this.timer.timeoutStop();
+  }
+
 }
