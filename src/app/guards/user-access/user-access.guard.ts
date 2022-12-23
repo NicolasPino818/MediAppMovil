@@ -33,7 +33,7 @@ export class UserAccessGuard implements CanActivate {
           if(helper.isTokenExpired(decodedToken)){
             const alert = await this.alertCtrl.create({
               header: 'Sesión expirada',
-              message: 'Su sesión ha caducado, para continuar inicie sesión nuevamente 2',
+              message: 'Su sesión ha caducado, para continuar inicie sesión nuevamente',
               buttons: ['Entendido']
             })
             alert.present();
