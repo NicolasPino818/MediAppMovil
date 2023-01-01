@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl: 'http://qrcode.discomediterraneo.cl/api'
+  apiBaseUrl: 'https://qrcode.discomediterraneo.cl/api'
 };
 
 /*
